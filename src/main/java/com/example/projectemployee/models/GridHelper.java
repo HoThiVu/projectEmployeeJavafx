@@ -81,21 +81,6 @@ public class GridHelper {
         formGridPane.add(labelDanToc, 2, 2);
         formGridPane.add(tfDanToc, 3, 2);
 
-
-        //----------------------------------------grip pane lable DATA
-
-
-//        rootGridPane.add(lblMaEmployee,6,6);
-
-//        lblTitleMaNV.setMinWidth(50);
-//        lblTitleHoTen.setMinWidth(50);
-//        lblTitleNgaySinh.setMinWidth(50);
-//        lblTitleNoiSinh.setMinWidth(50);
-//        lblTitleNguyenQuan.setMinWidth(50);
-//        lblTitleQuocTich.setMinWidth(50);
-//        lblTitleDanToc.setMinWidth(50);
-//        lblTitleMaNV.setPadding(new Insets(0,0,0,30));
-//        tfMaEmployee.setMaxWidth(200);
         btnADD.setMaxWidth(200);
         formGridPane.add(btnADD, 2, 4);
 //        formGridPane.add(btnReset, 3, 4);

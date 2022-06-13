@@ -1,10 +1,10 @@
 package com.example.projectemployee;
 
+import com.example.projectemployee.controller.WellcomeScene;
 import com.example.projectemployee.data.DBConnection;
 import com.example.projectemployee.models.Employee;
 import com.example.projectemployee.models.GridHelper;
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -20,6 +20,8 @@ import java.util.ArrayList;
 
 public class MainProjectEmployee extends Application {
     //    Scene Scene;
+
+
     boolean formSaveAddStatus = false;
 
 
@@ -28,12 +30,13 @@ public class MainProjectEmployee extends Application {
     }
 
     @Override
-    public void start(Stage Scene) {
+    public void start(Stage primaryStage) {
+//        window = primaryStage;
         DBConnection db = new DBConnection();
         //form
         GridHelper gridHelper = new GridHelper();
 
-        Scene.setTitle("Final Project JavaFX-HTV");
+        primaryStage.setTitle("Final Project JavaFX-HTV");
         // Tạo một ScrollPane
         ScrollPane scrollPane = new ScrollPane();
 
@@ -106,9 +109,13 @@ public class MainProjectEmployee extends Application {
         gridHelper.displayLb(rootGridPane);
 
         root.getChildren().addAll(formGridPane, rootGridPane);
-        Scene.setScene(new Scene(scrollPane, 1500, 700));
+
+        Scene scMain = new Scene(scrollPane, 1500, 700);
+
+        WellcomeScene wS = new WellcomeScene();
+        primaryStage.setScene(wS.renderMainboard(primaryStage,scMain));
         scrollPane.setContent(root);
-        Scene.show();
+        primaryStage.show();
 
     }
 
@@ -154,7 +161,6 @@ public class MainProjectEmployee extends Application {
             );
             rootGridPane.add(btnDel, 7, i + 6);
             rootGridPane.add(btnEdit, 8, i + 6);
-
         }
         System.out.print(vBox.getChildren());
     }
