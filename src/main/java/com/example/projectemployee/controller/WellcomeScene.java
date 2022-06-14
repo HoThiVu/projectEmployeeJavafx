@@ -1,11 +1,14 @@
 package com.example.projectemployee.controller;
 
 import javafx.application.Application;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+
+import static javafx.geometry.Pos.BASELINE_CENTER;
 
 public class WellcomeScene extends Application {
 
@@ -20,8 +23,8 @@ public class WellcomeScene extends Application {
     }
     public Scene  renderMainboard( Stage window, Scene scene){
         //Scene1
-        Label label = new Label("Welcome to Howkteam");
-        Button button1 = new Button("Go to course");
+        Label label = new Label("Chào mừng bạn đến với chương trình quản lý sinh viên");
+        Button button1 = new Button("Bắt đầu thôi nào!!!");
         button1.setOnAction(event -> {
             window.setScene(scene);
         });

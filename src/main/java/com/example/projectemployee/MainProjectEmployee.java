@@ -19,16 +19,11 @@ import javafx.stage.Stage;
 import java.util.ArrayList;
 
 public class MainProjectEmployee extends Application {
-    //    Scene Scene;
-
-
+    //    Scene Scene
     boolean formSaveAddStatus = false;
-
-
     public static void main(String[] args) {
         launch();
     }
-
     @Override
     public void start(Stage primaryStage) {
 //        window = primaryStage;
@@ -110,7 +105,7 @@ public class MainProjectEmployee extends Application {
 
         root.getChildren().addAll(formGridPane, rootGridPane);
 
-        Scene scMain = new Scene(scrollPane, 1500, 700);
+        Scene scMain = new Scene(scrollPane, 1200, 500);
 
         WellcomeScene wS = new WellcomeScene();
         primaryStage.setScene(wS.renderMainboard(primaryStage,scMain));
