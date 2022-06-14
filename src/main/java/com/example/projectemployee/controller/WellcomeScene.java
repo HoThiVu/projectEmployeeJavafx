@@ -11,15 +11,11 @@ import javafx.stage.Stage;
 import static javafx.geometry.Pos.BASELINE_CENTER;
 
 public class WellcomeScene extends Application {
-
     public static void main(String[] args) {
         launch(args);
     }
-
     @Override
     public void start(Stage primaryStage) {
-
-
     }
     public Scene  renderMainboard( Stage window, Scene scene){
         //Scene1

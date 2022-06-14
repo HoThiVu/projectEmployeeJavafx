@@ -6,6 +6,7 @@
 - Chức năng em đang làm:
     + tạo button để trở lại màn hình đâu tiên
     + Chỉnh lại màn mình đầu tiên
+    + chỉnh lại contructor thành prive do hiện tại đang để puplic, để sau này dễ dàng hơn thì em chuẩn bị chuyển thành prive
 - Chức năng em sẽ tạo là: 
     + Tạo relationship giữa 3 bảng để có thể hiện thị hết thông tin từ 3 bảng
 - Chức năng em thấy tâm đắc đó là: Khi em bắt đầu làm chức năng thì em chức ăng xóa trước, 

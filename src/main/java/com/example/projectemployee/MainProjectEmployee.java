@@ -83,7 +83,6 @@ public class MainProjectEmployee extends Application {
                 textfieldDanToc.setText("");
                 formSaveAddStatus = false;
 
-
             } else {
                 db.insertEmployee(employ);
                 System.out.println("add success");
@@ -98,7 +97,6 @@ public class MainProjectEmployee extends Application {
             }
             rootGridPane.getChildren().clear();
             getDisplayEmployees(root, db, rootGridPane, formGridPane);
-
         });
         gridHelper.displayGridForm(formGridPane, btnADD); // gọi hàm gridHelper
         gridHelper.displayLb(rootGridPane);
@@ -111,9 +109,7 @@ public class MainProjectEmployee extends Application {
         primaryStage.setScene(wS.renderMainboard(primaryStage,scMain));
         scrollPane.setContent(root);
         primaryStage.show();
-
     }
-
     void getDisplayEmployees(VBox vBox, DBConnection db, GridPane rootGridPane, GridPane formGridPane) {
         ArrayList<Employee> emloyeeList = db.getEmployees();
         GridHelper gridHelper_AddForm = new GridHelper();
@@ -124,12 +120,26 @@ public class MainProjectEmployee extends Application {
             rootGridPane.addRow(i + 6, new Label(" " + emloyeeList.get(i).maNV), new Label(" " + emloyeeList.get(i).hoTen),
                     new Label("" + emloyeeList.get(i).ngaySinh), new Label(" " + emloyeeList.get(i).noiSinh), new Label(" " + emloyeeList.get(i).nguyenQuan),
                     new Label(" " + emloyeeList.get(i).quocTich), new Label(" " + emloyeeList.get(i).danToc));
-
             int finalI = i;
             btnDel.setOnAction(e -> {
                 db.deleteEmployee(emloyeeList.get(finalI).maNV);
                 rootGridPane.getChildren().clear();
                 getDisplayEmployees(vBox, db, rootGridPane, formGridPane);
+                //-------------reset lai textfied ne
+                TextField textfieldMNV = (TextField) formGridPane.getChildren().get(1);
+                TextField textfieldHoTen = (TextField) formGridPane.getChildren().get(3);
+                TextField textfieldNgaySinh = (TextField) formGridPane.getChildren().get(5);
+                TextField textfieldNoiSinh = (TextField) formGridPane.getChildren().get(7);
+                TextField textfieldNguyenQuan = (TextField) formGridPane.getChildren().get(9);
+                TextField textfieldQuocTich = (TextField) formGridPane.getChildren().get(11);
+                TextField textfieldDanToc = (TextField) formGridPane.getChildren().get(13);
+                textfieldMNV.setText("");
+                textfieldHoTen.setText("");
+                textfieldNgaySinh.setText("");
+                textfieldNoiSinh.setText("");
+                textfieldNguyenQuan.setText("");
+                textfieldQuocTich.setText("");
+                textfieldDanToc.setText("");
             });
             btnEdit.setOnAction(e -> {
                         this.formSaveAddStatus = true;
@@ -151,7 +161,6 @@ public class MainProjectEmployee extends Application {
                         textfieldNguyenQuan.setText(emloyeeList.get(finalI).nguyenQuan);
                         textfieldQuocTich.setText(emloyeeList.get(finalI).quocTich);
                         textfieldDanToc.setText(emloyeeList.get(finalI).danToc);
-
                     }
             );
             rootGridPane.add(btnDel, 7, i + 6);

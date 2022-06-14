@@ -20,9 +20,7 @@ public class GridHelper {
         Label lblTitleDanToc = new Label("Dân Tộc");
         Label lblTitleEdit = new Label("Edit");
         Label lblTitleDelete = new Label("Delete");
-
         //------------Grid pane lable title name
-
         rootGridPane.add(lblTitleMaNV, 0, 5);
         rootGridPane.add(lblTitleHoTen, 1, 5);
         rootGridPane.add(lblTitleNgaySinh, 2, 5);
@@ -33,9 +31,7 @@ public class GridHelper {
         rootGridPane.add(lblTitleEdit, 7, 5);
         rootGridPane.add(lblTitleDelete, 8, 5);
     }
-
     public void displayGridForm(GridPane formGridPane, Button btnADD) {
-
         //FROM NHẬP -------------------------------
         Label lblMaEmployee = new Label("Nhập Mã Nhân Viên :");
         TextField tfMaEmployee = new TextField();
