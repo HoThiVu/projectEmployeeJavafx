@@ -14,4 +14,4 @@
   sau khi tìm hiêu và hỏi các bạn thì em dùng câu lệnh clear.
 - Lịch sử commit, do bị lỗi github nên em sử dụng 2 cái git,: 
     + ![](src/main/resources/commit1.PNG),
-    + ![](src/main/resources/commit.PNG)
+    + ![](src/main/resources/commit.PNG) git có tên là:projectEmployeeJavafx là git bài cuối để nộp.
