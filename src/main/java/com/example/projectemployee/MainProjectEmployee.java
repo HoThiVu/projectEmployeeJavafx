@@ -37,6 +37,7 @@ public class MainProjectEmployee extends Application {
 
         VBox root = new VBox();
 //        VBox showListEmployee =new VBox();
+        Button btnBack = new Button("<--- BACK");
 
         Button btnADD = new Button("ADD");
 //        Button btnReset = new Button("Reset");
@@ -54,8 +55,8 @@ public class MainProjectEmployee extends Application {
         formGridPane.setVgap(10);
         rootGridPane.setHgap(25);
         rootGridPane.setVgap(10);
-        rootGridPane.setAlignment(Pos.CENTER);
-        formGridPane.setAlignment(Pos.CENTER);
+//        rootGridPane.setAlignment(Pos.CENTER);
+//        formGridPane.setAlignment(Pos.CENTER);
 
         getDisplayEmployees(root, db, rootGridPane, formGridPane);
 
@@ -68,7 +69,8 @@ public class MainProjectEmployee extends Application {
             TextField textfieldNguyenQuan = (TextField) formGridPane.getChildren().get(9);
             TextField textfieldQuocTich = (TextField) formGridPane.getChildren().get(11);
             TextField textfieldDanToc = (TextField) formGridPane.getChildren().get(13);
-            Employee employ = new Employee(Integer.parseInt(textfieldMNV.getText()), textfieldHoTen.getText(), textfieldNgaySinh.getText(), textfieldNoiSinh.getText(), textfieldNguyenQuan.getText(), textfieldQuocTich.getText(), textfieldDanToc.getText());
+            Employee employ = new Employee(Integer.parseInt(textfieldMNV.getText()), textfieldHoTen.getText(), textfieldNgaySinh.getText(), textfieldNoiSinh.getText(),
+                    textfieldNguyenQuan.getText(), textfieldQuocTich.getText(), textfieldDanToc.getText());
 
             if (formSaveAddStatus == true) {
                 db.updataEmployee(employ);
@@ -101,11 +103,13 @@ public class MainProjectEmployee extends Application {
         gridHelper.displayGridForm(formGridPane, btnADD); // gọi hàm gridHelper
         gridHelper.displayLb(rootGridPane);
 
-        root.getChildren().addAll(formGridPane, rootGridPane);
+        root.getChildren().addAll(btnBack,formGridPane, rootGridPane);
 
         Scene scMain = new Scene(scrollPane, 1200, 500);
-
         WellcomeScene wS = new WellcomeScene();
+        btnBack.setOnAction(e -> {
+            primaryStage.setScene(wS.renderMainboard(primaryStage,scMain));
+        });
         primaryStage.setScene(wS.renderMainboard(primaryStage,scMain));
         scrollPane.setContent(root);
         primaryStage.show();
@@ -117,12 +121,12 @@ public class MainProjectEmployee extends Application {
         for (int i = 0; i < emloyeeList.size(); i++) {
             Button btnDel = new Button("DELETE");
             Button btnEdit = new Button("EDIT");
-            rootGridPane.addRow(i + 6, new Label(" " + emloyeeList.get(i).maNV), new Label(" " + emloyeeList.get(i).hoTen),
-                    new Label("" + emloyeeList.get(i).ngaySinh), new Label(" " + emloyeeList.get(i).noiSinh), new Label(" " + emloyeeList.get(i).nguyenQuan),
-                    new Label(" " + emloyeeList.get(i).quocTich), new Label(" " + emloyeeList.get(i).danToc));
+            rootGridPane.addRow(i + 6, new Label(" " + emloyeeList.get(i).getMaNV()), new Label(" " + emloyeeList.get(i).getHoTen()),
+                    new Label("" + emloyeeList.get(i).getNgaySinh()), new Label(" " + emloyeeList.get(i).getNoiSinh()), new Label(" " + emloyeeList.get(i).getNguyenQuan()),
+                    new Label(" " + emloyeeList.get(i).getQuocTich()), new Label(" " + emloyeeList.get(i).getDanToc()));
             int finalI = i;
             btnDel.setOnAction(e -> {
-                db.deleteEmployee(emloyeeList.get(finalI).maNV);
+                db.deleteEmployee(emloyeeList.get(finalI).getMaNV());
                 rootGridPane.getChildren().clear();
                 getDisplayEmployees(vBox, db, rootGridPane, formGridPane);
                 //-------------reset lai textfied ne
@@ -154,13 +158,13 @@ public class MainProjectEmployee extends Application {
                         TextField textfieldNguyenQuan = (TextField) formGridPane.getChildren().get(9);
                         TextField textfieldQuocTich = (TextField) formGridPane.getChildren().get(11);
                         TextField textfieldDanToc = (TextField) formGridPane.getChildren().get(13);
-                        textfieldMNV.setText(String.valueOf(emloyeeList.get(finalI).maNV));
-                        textfieldHoTen.setText(emloyeeList.get(finalI).hoTen);
-                        textfieldNgaySinh.setText(emloyeeList.get(finalI).ngaySinh);
-                        textfieldNoiSinh.setText(emloyeeList.get(finalI).noiSinh);
-                        textfieldNguyenQuan.setText(emloyeeList.get(finalI).nguyenQuan);
-                        textfieldQuocTich.setText(emloyeeList.get(finalI).quocTich);
-                        textfieldDanToc.setText(emloyeeList.get(finalI).danToc);
+                        textfieldMNV.setText(String.valueOf(emloyeeList.get(finalI).getMaNV()));
+                        textfieldHoTen.setText(emloyeeList.get(finalI).getHoTen());
+                        textfieldNgaySinh.setText(emloyeeList.get(finalI).getNgaySinh());
+                        textfieldNoiSinh.setText(emloyeeList.get(finalI).getNoiSinh());
+                        textfieldNguyenQuan.setText(emloyeeList.get(finalI).getNguyenQuan());
+                        textfieldQuocTich.setText(emloyeeList.get(finalI).getQuocTich());
+                        textfieldDanToc.setText(emloyeeList.get(finalI).getDanToc());
                     }
             );
             rootGridPane.add(btnDel, 7, i + 6);

@@ -1,16 +1,33 @@
 package com.example.projectemployee.models;
 
 public class Employee {
-    //    public String Ngaysinh;
-    //    public String MaNV;
-    public int maNV;
-    public String hoTen;
-    public String ngaySinh;
-    public String noiSinh;
-    public String nguyenQuan;
-    public String quocTich;
-    public String danToc;
 
+    private int maNV;
+    private String hoTen;
+    private String ngaySinh;
+    private String noiSinh;
+    private String nguyenQuan;
+    private String quocTich;
+    private String danToc;
+//
+    private int ID_Luong;
+    private int CapBac;
+    private float Luong;
+    private int HeSoLuong;
+
+    public Employee(int maNV, String hoTen, String ngaySinh, String noiSinh, String nguyenQuan, String quocTich, String danToc,int ID_Luong,int CapBac, float Luong, int HeSoLuong) {
+        setDanToc(danToc);
+        setHoTen(hoTen);
+        setNgaySinh(ngaySinh);
+        setNoiSinh(noiSinh);
+        setNguyenQuan(nguyenQuan);
+        setMaNV(maNV);
+        setQuocTich(quocTich);
+        setID_Luong(ID_Luong);
+        setCapBac(CapBac);
+        setHeSoLuong(HeSoLuong);
+        setLuong(Luong);
+    }
     public Employee(int maNV, String hoTen, String ngaySinh, String noiSinh, String nguyenQuan, String quocTich, String danToc) {
         setDanToc(danToc);
         setHoTen(hoTen);
@@ -49,6 +66,22 @@ public class Employee {
         return quocTich;
     }
 
+    public int getID_Luong() {
+        return ID_Luong;
+    }
+
+    public int getCapBac() {
+        return CapBac;
+    }
+
+    public int getHeSoLuong() {
+        return HeSoLuong;
+    }
+
+    public float getLuong() {
+        return Luong;
+    }
+
     //-----
     public void setDanToc(String danToc) {
         this.danToc = danToc;
@@ -78,6 +111,20 @@ public class Employee {
         this.quocTich = quocTich;
     }
 
+    public void setID_Luong(int ID_Luong) {
+        this.ID_Luong = ID_Luong;
+    }
 
+    public void setCapBac(int capBac) {
+        this.CapBac = capBac;
+    }
+
+    public void setLuong(float luong) {
+        this.Luong = luong;
+    }
+
+    public void setHeSoLuong(int heSoLuong) {
+        this.HeSoLuong = heSoLuong;
+    }
 }
 
