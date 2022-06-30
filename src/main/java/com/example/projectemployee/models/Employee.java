@@ -11,11 +11,11 @@ public class Employee {
     private String danToc;
 //
     private int ID_Luong;
-    private int CapBac;
+    private String CapBac;
     private float Luong;
     private int HeSoLuong;
 
-    public Employee(int maNV, String hoTen, String ngaySinh, String noiSinh, String nguyenQuan, String quocTich, String danToc,int ID_Luong,int CapBac, float Luong, int HeSoLuong) {
+    public Employee(int maNV, String hoTen, String ngaySinh, String noiSinh, String nguyenQuan, String quocTich, String danToc,int ID_Luong,String CapBac, float Luong, int HeSoLuong) {
         setDanToc(danToc);
         setHoTen(hoTen);
         setNgaySinh(ngaySinh);
@@ -70,7 +70,7 @@ public class Employee {
         return ID_Luong;
     }
 
-    public int getCapBac() {
+    public String getCapBac() {
         return CapBac;
     }
 
@@ -115,7 +115,7 @@ public class Employee {
         this.ID_Luong = ID_Luong;
     }
 
-    public void setCapBac(int capBac) {
+    public void setCapBac(String capBac) {
         this.CapBac = capBac;
     }
 

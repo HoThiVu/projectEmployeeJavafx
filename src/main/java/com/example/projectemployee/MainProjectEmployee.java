@@ -1,5 +1,6 @@
 package com.example.projectemployee;
 
+import com.example.projectemployee.controller.Luong;
 import com.example.projectemployee.controller.WellcomeScene;
 import com.example.projectemployee.data.DBConnection;
 import com.example.projectemployee.models.Employee;
@@ -17,6 +18,8 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
+
+//import static java.rmi.server.LogStream.log;
 
 public class MainProjectEmployee extends Application {
     //    Scene Scene
@@ -40,13 +43,13 @@ public class MainProjectEmployee extends Application {
         Button btnBack = new Button("<--- BACK");
 
         Button btnADD = new Button("ADD");
+        Button btnADDLuong = new Button("Them lUONG");
 //        Button btnReset = new Button("Reset");
 
 
 //        Chia GridPane----------------------------------
         GridPane rootGridPane = new GridPane();
         GridPane formGridPane = new GridPane();
-
 
         formGridPane.setPadding(new Insets(20));
         rootGridPane.setPadding(new Insets(20));
@@ -69,8 +72,15 @@ public class MainProjectEmployee extends Application {
             TextField textfieldNguyenQuan = (TextField) formGridPane.getChildren().get(9);
             TextField textfieldQuocTich = (TextField) formGridPane.getChildren().get(11);
             TextField textfieldDanToc = (TextField) formGridPane.getChildren().get(13);
+
+            TextField textfieldID_Luong = (TextField) formGridPane.getChildren().get(15);
+            TextField textfieldCapBac = (TextField) formGridPane.getChildren().get(17);
+            TextField textfieldLuong = (TextField) formGridPane.getChildren().get(19);
+            TextField textfieldHeSoLuong = (TextField) formGridPane.getChildren().get(21);
+
             Employee employ = new Employee(Integer.parseInt(textfieldMNV.getText()), textfieldHoTen.getText(), textfieldNgaySinh.getText(), textfieldNoiSinh.getText(),
-                    textfieldNguyenQuan.getText(), textfieldQuocTich.getText(), textfieldDanToc.getText());
+                    textfieldNguyenQuan.getText(), textfieldQuocTich.getText(), textfieldDanToc.getText(), Integer.parseInt(textfieldID_Luong.getText()),
+                    textfieldCapBac.getText(),Float.parseFloat(textfieldLuong.getText()),Integer.parseInt(textfieldHeSoLuong.getText()));
 
             if (formSaveAddStatus == true) {
                 db.updataEmployee(employ);
@@ -83,6 +93,12 @@ public class MainProjectEmployee extends Application {
                 textfieldNguyenQuan.setText("");
                 textfieldQuocTich.setText("");
                 textfieldDanToc.setText("");
+//
+                textfieldID_Luong.setText("");
+                textfieldCapBac.setText("");
+                textfieldLuong.setText("");
+                textfieldHeSoLuong.setText("");
+
                 formSaveAddStatus = false;
 
             } else {
@@ -96,6 +112,10 @@ public class MainProjectEmployee extends Application {
                 textfieldNguyenQuan.setText("");
                 textfieldQuocTich.setText("");
                 textfieldDanToc.setText("");
+                textfieldID_Luong.setText("");
+                textfieldCapBac.setText("");
+                textfieldLuong.setText("");
+                textfieldHeSoLuong.setText("");
             }
             rootGridPane.getChildren().clear();
             getDisplayEmployees(root, db, rootGridPane, formGridPane);
@@ -103,12 +123,16 @@ public class MainProjectEmployee extends Application {
         gridHelper.displayGridForm(formGridPane, btnADD); // gọi hàm gridHelper
         gridHelper.displayLb(rootGridPane);
 
-        root.getChildren().addAll(btnBack,formGridPane, rootGridPane);
+        root.getChildren().addAll(btnBack,btnADDLuong,formGridPane, rootGridPane);
 
         Scene scMain = new Scene(scrollPane, 1200, 500);
         WellcomeScene wS = new WellcomeScene();
+        Luong luong = new Luong();
         btnBack.setOnAction(e -> {
             primaryStage.setScene(wS.renderMainboard(primaryStage,scMain));
+        });
+        btnADDLuong.setOnAction(e -> {
+            primaryStage.setScene(luong.renderLuong(primaryStage,scMain));
         });
         primaryStage.setScene(wS.renderMainboard(primaryStage,scMain));
         scrollPane.setContent(root);
@@ -118,7 +142,7 @@ public class MainProjectEmployee extends Application {
         ArrayList<Employee> emloyeeList = db.getEmployees();
         GridHelper gridHelper_AddForm = new GridHelper();
         gridHelper_AddForm.displayLb(rootGridPane);
-        for (int i = 0; i < emloyeeList.size(); i++) {
+        for (int i = 0; i < emloyeeList.size(); i++){
             Button btnDel = new Button("DELETE");
             Button btnEdit = new Button("EDIT");
             rootGridPane.addRow(i + 6, new Label(" " + emloyeeList.get(i).getMaNV()), new Label(" " + emloyeeList.get(i).getHoTen()),
@@ -133,6 +157,7 @@ public class MainProjectEmployee extends Application {
                 TextField textfieldMNV = (TextField) formGridPane.getChildren().get(1);
                 TextField textfieldHoTen = (TextField) formGridPane.getChildren().get(3);
                 TextField textfieldNgaySinh = (TextField) formGridPane.getChildren().get(5);
+//                log("Hello world!");
                 TextField textfieldNoiSinh = (TextField) formGridPane.getChildren().get(7);
                 TextField textfieldNguyenQuan = (TextField) formGridPane.getChildren().get(9);
                 TextField textfieldQuocTich = (TextField) formGridPane.getChildren().get(11);
@@ -154,6 +179,7 @@ public class MainProjectEmployee extends Application {
                         TextField textfieldMNV = (TextField) formGridPane.getChildren().get(1);
                         TextField textfieldHoTen = (TextField) formGridPane.getChildren().get(3);
                         TextField textfieldNgaySinh = (TextField) formGridPane.getChildren().get(5);
+
                         TextField textfieldNoiSinh = (TextField) formGridPane.getChildren().get(7);
                         TextField textfieldNguyenQuan = (TextField) formGridPane.getChildren().get(9);
                         TextField textfieldQuocTich = (TextField) formGridPane.getChildren().get(11);

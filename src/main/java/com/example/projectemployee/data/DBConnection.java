@@ -19,7 +19,7 @@ public class DBConnection {
     }
     public ArrayList<Employee> getEmployees() {
         ArrayList<Employee> list = new ArrayList<>();
-        String sql = "SELECT thongtinnhanvien.MaNV, thongtinnhanvien.HoTen, luong.ID_Luong, luong.Luong FROM thongtinnhanvien JOIN luong ON luong.MaNV = thongtinnhanvien.MaNV";
+        String sql = "SELECT thongtinnhanvien.MaNV, thongtinnhanvien.HoTen, thongtinnhanvien.NgaySinh, thongtinnhanvien.NoiSinh, thongtinnhanvien.NguyenQuan, thongtinnhanvien.QuocTich, thongtinnhanvien.DanToc, luong.ID_Luong, luong.Luong,luong.CapBac, luong.HeSoLuong  FROM thongtinnhanvien LEFT JOIN luong ON luong.MaNV = thongtinnhanvien.MaNV";
         try {
             ResultSet st = connection.prepareStatement(sql).executeQuery();
             while (st.next()) {
@@ -34,8 +34,9 @@ public class DBConnection {
                         st.getString("NguyenQuan"),
                         st.getString("QuocTich"),
                         st.getString("DanToc"),
+//
                         st.getInt("ID_Luong"),
-                        st.getInt("CapBac"),
+                        st.getString("CapBac"),
                         st.getFloat("Luong"),
                         st.getInt("HeSoLuong")
 
@@ -55,6 +56,8 @@ public class DBConnection {
         try {
             connection.prepareStatement(sql).executeUpdate();
             System.out.println("them mot hoc sinh thanh cong !!!");
+            sql =  "INSERT INTO luong (ID_Luong, MaNV,CapBac, Luong, HeSoLuong) VALUES (" + employ.getID_Luong() + ",'" + employ.getMaNV() + ",'" + employ.getCapBac() + "','" + employ.getLuong() + "','" + employ.getHeSoLuong()+ "')";
+            connection.prepareStatement(sql).executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
