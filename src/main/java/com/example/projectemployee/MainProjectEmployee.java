@@ -138,7 +138,7 @@ public class MainProjectEmployee extends Application {
         scrollPane.setContent(root);
         primaryStage.show();
     }
-    void getDisplayEmployees(VBox vBox, DBConnection db, GridPane rootGridPane, GridPane formGridPane) {
+   void getDisplayEmployees(VBox vBox, DBConnection db, GridPane rootGridPane, GridPane formGridPane) {
         ArrayList<Employee> emloyeeList = db.getEmployees();
         GridHelper gridHelper_AddForm = new GridHelper();
         gridHelper_AddForm.displayLb(rootGridPane);
