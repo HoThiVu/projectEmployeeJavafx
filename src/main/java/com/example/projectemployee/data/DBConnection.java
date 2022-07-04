@@ -14,7 +14,7 @@ public class DBConnection {
             connection = DriverManager.getConnection("jdbc:mysql://localhost/projectemployee", "root", "");
             System.out.println("ket noi thanh cong");
         } catch (SQLException e) {
-            System.out.println(e + "    ket nối thất bại");
+            System.out.println(e + "  ket nối thất bại");
         }
     }
     public ArrayList<Employee> getEmployees() {

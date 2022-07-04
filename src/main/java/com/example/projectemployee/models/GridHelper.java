@@ -9,7 +9,6 @@ import javafx.scene.layout.VBox;
 
 public class GridHelper {
     public void displayLb(GridPane rootGridPane) {
-
         //        ------------------------------------------------------------------------------Grid pane lable title name
         Label lblTitleMaNV = new Label("Mã NV");
         Label lblTitleHoTen = new Label("Họ Tên");

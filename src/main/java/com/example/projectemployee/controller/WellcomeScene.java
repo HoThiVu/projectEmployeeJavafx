@@ -19,7 +19,7 @@ public class WellcomeScene extends Application {
     }
     public Scene  renderMainboard( Stage window, Scene scene){
         //Scene1
-        Label label = new Label("Chào mừng bạn đến với chương trình quản lý sinh viên");
+        Label label = new Label("Chào mừng bạn đến với chương trình quản lý nhân viên");
         Button button1 = new Button("Bắt đầu thôi nào!!!");
         button1.setOnAction(event -> {
             window.setScene(scene);

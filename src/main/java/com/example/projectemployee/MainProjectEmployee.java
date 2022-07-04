@@ -19,14 +19,12 @@ import javafx.stage.Stage;
 import java.util.ArrayList;
 
 public class MainProjectEmployee extends Application {
-    //    Scene Scene
     boolean formSaveAddStatus = false;
     public static void main(String[] args) {
         launch();
     }
     @Override
     public void start(Stage primaryStage) {
-//        window = primaryStage;
         DBConnection db = new DBConnection();
         //form
         GridHelper gridHelper = new GridHelper();
