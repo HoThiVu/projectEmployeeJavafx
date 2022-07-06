@@ -17,8 +17,6 @@ import javafx.stage.Stage;
 import java.util.ArrayList;
 import java.util.Optional;
 
-//import static java.rmi.server.LogStream.log;
-
 public class MainProjectEmployee extends Application {
     boolean formSaveAddStatus = false;
     public static void main(String[] args) {
@@ -122,16 +120,17 @@ public class MainProjectEmployee extends Application {
 
         Scene scMain = new Scene(scrollPane, 1200, 500);
         WellcomeScene wS = new WellcomeScene();
-        Luong luong = new Luong();
+        Luong luong = new Luong(primaryStage,scMain);
         btnBack.setOnAction(e -> {
             primaryStage.setScene(wS.renderMainboard(primaryStage,scMain));
         });
         btnADDLuong.setOnAction(e -> {
-            primaryStage.setScene(luong.renderLuong(primaryStage,scMain));
+            primaryStage.setScene(luong.renderLuong());
         });
         primaryStage.setScene(wS.renderMainboard(primaryStage,scMain));
         scrollPane.setContent(root);
         primaryStage.show();
+
     }
    void getDisplayEmployees(VBox vBox, DBConnection db, GridPane rootGridPane, GridPane formGridPane) {
         ArrayList<Employee> emloyeeList = db.getEmployees();
@@ -147,8 +146,8 @@ public class MainProjectEmployee extends Application {
             btnDel.setOnAction(e -> {
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setTitle("Cofirmation");
-                alert.setHeaderText("Alert Information");
-                alert.setContentText("choose your option");
+                alert.setHeaderText("Bạn có chắc chắn muôn xóa không");
+                alert.setContentText("Chọn: ");
 
                 ButtonType buttonTypeYes = new ButtonType("Yes", ButtonBar.ButtonData.YES);
                 ButtonType buttonTypeNo = new ButtonType("No", ButtonBar.ButtonData.NO);
@@ -158,19 +157,8 @@ public class MainProjectEmployee extends Application {
 
                 Optional<ButtonType> result = alert.showAndWait();
 
-                if (result.get()== buttonTypeYes)
-                    System.out.println("Code for yes");
-                else if (result.get().getButtonData() == ButtonBar.ButtonData.NO)
-                    System.out.println("Code for no");
-                else
-                    System.out.println("Code for cancel");
-                String message = result.get().getText();
-                Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
-                alert1.setTitle("Information");
-                alert1.setHeaderText("Notification");
-                alert1.setContentText(message);
-                alert1.show();
-                db.deleteEmployee(emloyeeList.get(finalI).getMaNV());
+                if (result.get()== buttonTypeYes){
+                    db.deleteEmployee(emloyeeList.get(finalI).getMaNV());
                 rootGridPane.getChildren().clear();
                 getDisplayEmployees(vBox, db, rootGridPane, formGridPane);
                 //-------------reset lai textfied ne
@@ -189,6 +177,18 @@ public class MainProjectEmployee extends Application {
                 textfieldNguyenQuan.setText("");
                 textfieldQuocTich.setText("");
                 textfieldDanToc.setText("");
+//                    System.out.println("xóa nó");
+                }
+                else if (result.get().getButtonData() == ButtonBar.ButtonData.NO);
+//                    System.out.println("không xóa");
+                else
+                    System.out.println("Cancel");
+                String message = result.get().getText();
+                Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
+                alert1.setTitle("Information");
+                alert1.setHeaderText("Notification");
+                alert1.setContentText(message);
+                alert1.show();
             });
             btnEdit.setOnAction(e -> {
                         this.formSaveAddStatus = true;

@@ -18,8 +18,8 @@ public class GridHelper {
         Label lblTitleNguyenQuan = new Label("Nguyên Quán");
         Label lblTitleQuocTich = new Label("Quốc Tịch");
         Label lblTitleDanToc = new Label("Dân Tộc");
-        Label lblTitleEdit = new Label("Edit");
-        Label lblTitleDelete = new Label("Delete");
+        Label lblTitleEdit = new Label("Delete");
+        Label lblTitleDelete = new Label("Edit");
 
         //------------Grid pane lable title name
         rootGridPane.add(lblTitleMaNV, 0, 5);
