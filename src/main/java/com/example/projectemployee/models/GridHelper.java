@@ -9,6 +9,7 @@ import javafx.scene.layout.VBox;
 
 public class GridHelper {
     public void displayLb(GridPane rootGridPane) {
+
         //        ------------------------------------------------------------------------------Grid pane lable title name
         Label lblTitleMaNV = new Label("Mã NV");
         Label lblTitleHoTen = new Label("Họ Tên");
@@ -19,6 +20,7 @@ public class GridHelper {
         Label lblTitleDanToc = new Label("Dân Tộc");
         Label lblTitleEdit = new Label("Edit");
         Label lblTitleDelete = new Label("Delete");
+
         //------------Grid pane lable title name
         rootGridPane.add(lblTitleMaNV, 0, 5);
         rootGridPane.add(lblTitleHoTen, 1, 5);
@@ -29,6 +31,22 @@ public class GridHelper {
         rootGridPane.add(lblTitleDanToc, 6, 5);
         rootGridPane.add(lblTitleEdit, 7, 5);
         rootGridPane.add(lblTitleDelete, 8, 5);
+    }
+    public void displayLbLuong(GridPane rootGridPane){
+        Label lblTitleID_Luong = new Label("ID Luong");
+        Label lblTitleMaNV = new Label("Ma NV");
+        Label lblTitleCapBac  = new Label("Cap Bac");
+        Label lblTitleLuong = new Label("Luong Chinh");
+        Label lblTitleHeSoLuong = new Label("He So Luong");
+
+
+        //------------Grid pane lable title name
+        rootGridPane.add(lblTitleID_Luong, 0, 6);
+        rootGridPane.add(lblTitleMaNV, 1, 6);
+        rootGridPane.add(lblTitleCapBac, 2, 6);
+        rootGridPane.add(lblTitleLuong , 3, 6);
+        rootGridPane.add(lblTitleHeSoLuong , 4, 6);
+
     }
     public void displayGrindSalary(GridPane formGridPane, Button btnADD){
         Label labelID_Luong = new Label("Nhập ID_Luong nhan vien :");
@@ -87,7 +105,7 @@ public class GridHelper {
         //
         Label labelDanToc = new Label("Nhập Tên Dân Tộc :");
         TextField tfDanToc = new TextField();
-//luong
+
 
         //--------------------------------Grid pane from
         formGridPane.add(lblMaEmployee, 0, 0);
@@ -115,9 +133,7 @@ public class GridHelper {
 
         btnADD.setMaxWidth(200);
         formGridPane.add(btnADD, 2, 4);
-//        formGridPane.add(btnADDLuong, 3, 4);
 
-//        formGridPane.add(btnReset, 3, 4);
     }
 
 }

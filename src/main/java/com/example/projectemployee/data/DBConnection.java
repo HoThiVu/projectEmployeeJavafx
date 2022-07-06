@@ -19,7 +19,13 @@ public class DBConnection {
     }
     public ArrayList<Employee> getEmployees() {
         ArrayList<Employee> list = new ArrayList<>();
-        String sql = "SELECT thongtinnhanvien.MaNV, thongtinnhanvien.HoTen, thongtinnhanvien.NgaySinh, thongtinnhanvien.NoiSinh, thongtinnhanvien.NguyenQuan, thongtinnhanvien.QuocTich, thongtinnhanvien.DanToc, luong.ID_Luong, luong.Luong,luong.CapBac, luong.HeSoLuong  FROM thongtinnhanvien CROSS JOIN luong ON luong.MaNV = thongtinnhanvien.MaNV";
+        String sql =
+                "SELECT thongtinnhanvien.MaNV, thongtinnhanvien.HoTen, thongtinnhanvien.NgaySinh, thongtinnhanvien.NoiSinh, thongtinnhanvien.NguyenQuan, " +
+                "thongtinnhanvien.QuocTich, thongtinnhanvien.DanToc, luong.ID_Luong, luong.Luong,luong.CapBac, luong.HeSoLuong  " +
+                "FROM thongtinnhanvien join luong ON luong.MaNV = thongtinnhanvien.MaNV ORDER BY thongtinnhanvien.HoTen";
+
+//        String sql = "SELECT * FROM thongtinnhanvien INNER JOIN luong ON luong.MaNV = thongtinnhanvien.MaNV";
+
         try {
             ResultSet st = connection.prepareStatement(sql).executeQuery();
             while (st.next()) {

@@ -44,7 +44,6 @@ public class MainProjectEmployee extends Application {
         Button btnADDLuong = new Button("Them lUONG");
 //        Button btnReset = new Button("Reset");
 
-
 //        Chia GridPane----------------------------------
         GridPane rootGridPane = new GridPane();
         GridPane formGridPane = new GridPane();
