@@ -9,6 +9,7 @@
     + chỉnh lại contructor thành prive do hiện tại đang để puplic, để sau này dễ dàng hơn thì em chuẩn bị chuyển thành prive
 - Chức năng em sẽ tạo là: 
     + Tạo relationship giữa 3 bảng để có thể hiện thị hết thông tin từ 3 bảng
+- Đường Link tới video demo:[](url: https://www.youtube.com/watch?v=ohCSWsm7HFk)
 - Chức năng em thấy tâm đắc đó là: Khi em bắt đầu làm chức năng thì em chức ăng xóa trước, 
   đầu tiên em dùng câu lệnh remove nhưng mỗi lần chạy xóa được nhưng nó không đúng luồng đi, 
   sau khi tìm hiêu và hỏi các bạn thì em dùng câu lệnh clear.

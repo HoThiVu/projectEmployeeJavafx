@@ -19,7 +19,7 @@ public class DBConnection {
     }
     public ArrayList<Employee> getEmployees() {
         ArrayList<Employee> list = new ArrayList<>();
-        String sql = "SELECT * FROM thongtinnhanvien";
+        String sql = "SELECT thongtinnhanvien.MaNV, thongtinnhanvien.HoTen, thongtinnhanvien.NgaySinh, thongtinnhanvien.NoiSinh, thongtinnhanvien.NguyenQuan, thongtinnhanvien.QuocTich, thongtinnhanvien.DanToc, luong.ID_Luong, luong.Luong,luong.CapBac, luong.HeSoLuong  FROM thongtinnhanvien CROSS JOIN luong ON luong.MaNV = thongtinnhanvien.MaNV";
         try {
             ResultSet st = connection.prepareStatement(sql).executeQuery();
             while (st.next()) {
@@ -28,12 +28,18 @@ public class DBConnection {
 //                System.out.println("score: " + st.getFloat("score"));
                 Employee employ = new Employee(
                         st.getInt("MaNV"),
-                        st.getString("Hoten"),
-                        st.getString("Ngaysinh"),
-                        st.getString("Noisinh"),
-                        st.getString("Nguyenquan"),
-                        st.getString("Quoctich"),
-                        st.getString("Dantoc")
+                        st.getString("HoTen"),
+                        st.getString("NgaySinh"),
+                        st.getString("NoiSinh"),
+                        st.getString("NguyenQuan"),
+                        st.getString("QuocTich"),
+                        st.getString("DanToc"),
+//
+                        st.getInt("ID_Luong"),
+                        st.getString("CapBac"),
+                        st.getFloat("Luong"),
+                        st.getInt("HeSoLuong")
+
                 );
                 list.add(employ);
             }
@@ -44,17 +50,21 @@ public class DBConnection {
         return list;
     }
     public void insertEmployee(Employee employ) {
-        String sql = "INSERT INTO thongtinnhanvien (MaNV,HoTen,NgaySinh,NoiSinh,NguyenQuan,QuocTich,DanToc) VALUES (" + employ.maNV + ",'" + employ.hoTen + "','" + employ.ngaySinh + "','" + employ.noiSinh + "','" + employ.nguyenQuan + "','" + employ.quocTich + "','" + employ.danToc + "')";
+        String sql = "INSERT INTO thongtinnhanvien (MaNV,HoTen,NgaySinh,NoiSinh,NguyenQuan,QuocTich,DanToc) VALUES (" + employ.getMaNV() + ",'" + employ.getHoTen() + "','" + employ.getNgaySinh() + "','" + employ.getNoiSinh() +
+                "','" + employ.getNguyenQuan() + "','" + employ.getQuocTich() + "','" + employ.getDanToc() + "')";
         System.out.println(sql);
         try {
             connection.prepareStatement(sql).executeUpdate();
             System.out.println("them mot hoc sinh thanh cong !!!");
+            sql =  "INSERT INTO luong (ID_Luong, MaNV,CapBac, Luong, HeSoLuong) VALUES (" + employ.getID_Luong() + ",'" + employ.getMaNV() + ",'" + employ.getCapBac() + "','" + employ.getLuong() + "','" + employ.getHeSoLuong()+ "')";
+            connection.prepareStatement(sql).executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
     public void updataEmployee(Employee employ) {
-        String sql = "UPDATE thongtinnhanvien SET HoTen = '" + employ.hoTen + "',NgaySinh = '" + employ.ngaySinh + "',NoiSinh = '" + employ.noiSinh + "',NguyenQuan = '" + employ.nguyenQuan + "',QuocTich = '" + employ.quocTich + "',DanToc = '" + employ.danToc + "' WHERE MaNV = " + employ.maNV + "";
+        String sql = "UPDATE thongtinnhanvien SET HoTen = '" + employ.getHoTen() + "',NgaySinh = '" + employ.getNgaySinh() + "',NoiSinh = '" + employ.getNoiSinh() +
+                "',NguyenQuan = '" + employ.getNguyenQuan() + "',QuocTich = '" + employ.getQuocTich() + "',DanToc = '" + employ.getDanToc() + "' WHERE MaNV = " + employ.getMaNV() + "";
         System.out.println(sql);
         try {
             connection.prepareStatement(sql).executeUpdate();
@@ -68,6 +78,17 @@ public class DBConnection {
         System.out.println(sql);
         try {
             connection.prepareStatement(sql).executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public void insertSalary(Employee employee){
+        String sql = "INSERT INTO luong (ID_LUONG,MaNV,CapBac,Luong,HesoLuong) VALUES (" + employee.getID_Luong() + ",'" + employee.getMaNV() +
+                "','" + employee.getCapBac() + "','" + employee.getLuong() +
+                "','" + employee.getHeSoLuong()+"')";
+        try {
+            connection.prepareStatement(sql).executeUpdate();
+            System.out.println("good");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

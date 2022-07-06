@@ -19,3 +19,8 @@ INSERT INTO `thongtinnhanvien` (`MaNV`, `Hoten`, `Ngaysinh`, `Noisinh`, `Nguyenq
 (18, 'Nguyễn Nhật Thành', '1988-08-24', 'Điện Biên Phủ', 'Điện Biên Phủ', 'Việt Nam', 'Kinh'),
 (19, 'Lê Việt Anh', '1987-04-13', 'Hà Nội', 'Hà Nội', 'Việt Nam', 'Kinh'),
 (20, 'Hà Viết Khương', '1988-12-29', 'Hà Nội', 'Hà Nội', 'Việt Nam', 'Kinh');
+-----------------------
+INSERT INTO `luong` (`ID_Luong`, `MaNV`, `CapBac`, `Luong`, `HeSoLuong`) VALUES ('05', '9', 'IT Manager', '10000000', '2'), ('4', '15', 'HR', '7000000', '2');
+
+SELECT thongtinnhanvien.MaNV, thongtinnhanvien.HoTen, luong.ID_Luong, luong.Luong FROM thongtinnhanvien JOIN luong ON luong.MaNV = thongtinnhanvien.MaNV;
+

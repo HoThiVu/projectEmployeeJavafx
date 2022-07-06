@@ -30,7 +30,42 @@ public class GridHelper {
         rootGridPane.add(lblTitleEdit, 7, 5);
         rootGridPane.add(lblTitleDelete, 8, 5);
     }
+    public void displayGrindSalary(GridPane formGridPane, Button btnADD){
+        Label labelID_Luong = new Label("Nhập ID_Luong nhan vien :");
+        TextField tfID_Luong = new TextField();
+        //
+        Label labelLuong = new Label("Nhập Luong nhan vien :");
+        TextField tfLuong = new TextField();
+
+        Label labelCapBac = new Label("Nhập cap bac nhan vien :");
+        TextField tfCapBac = new TextField();
+
+        Label labelHeSoLuong = new Label("Nhập he so luong nhan vien :");
+        TextField tfHeSoLuong = new TextField();
+
+        Label lblMaEmployee = new Label("Nhập Mã Nhân Viên :");
+        TextField tfMaEmployee = new TextField();
+
+        formGridPane.add(labelID_Luong, 4, 0);
+        formGridPane.add(tfID_Luong, 5, 0);
+
+        formGridPane.add(labelCapBac, 4, 1);
+        formGridPane.add(tfCapBac, 5, 1);
+
+        formGridPane.add(labelLuong, 4, 2);
+        formGridPane.add(tfLuong, 5, 2);
+
+        formGridPane.add(labelHeSoLuong, 4, 3);
+        formGridPane.add(tfHeSoLuong, 5, 3);
+
+        formGridPane.add(lblMaEmployee, 4, 4);
+        formGridPane.add(tfMaEmployee, 5, 4);
+
+        btnADD.setMaxWidth(200);
+        formGridPane.add(btnADD, 2, 5);
+    }
     public void displayGridForm(GridPane formGridPane, Button btnADD) {
+
         //FROM NHẬP -------------------------------
         Label lblMaEmployee = new Label("Nhập Mã Nhân Viên :");
         TextField tfMaEmployee = new TextField();
@@ -52,7 +87,7 @@ public class GridHelper {
         //
         Label labelDanToc = new Label("Nhập Tên Dân Tộc :");
         TextField tfDanToc = new TextField();
-
+//luong
 
         //--------------------------------Grid pane from
         formGridPane.add(lblMaEmployee, 0, 0);
@@ -75,9 +110,13 @@ public class GridHelper {
         //
         formGridPane.add(labelDanToc, 2, 2);
         formGridPane.add(tfDanToc, 3, 2);
+//        ----luong COT:I , HANG:I1
+
 
         btnADD.setMaxWidth(200);
         formGridPane.add(btnADD, 2, 4);
+//        formGridPane.add(btnADDLuong, 3, 4);
+
 //        formGridPane.add(btnReset, 3, 4);
     }
 
